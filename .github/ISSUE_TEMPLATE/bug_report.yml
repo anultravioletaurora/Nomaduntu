@@ -14,15 +14,11 @@ body:
       description: Which role(s) is the issue related to?
       multiple: true
       options:
+        - apt_repo
+        - apt_update
         - consul
         - nomad
-        - podman
-        - docker_desktop
-        - github_actions
-        - minecraft
         - set_facts
-        - software_update
-        - reboot
         - Other / unsure
     validations:
       required: true
@@ -64,13 +60,13 @@ body:
       required: true
 
   - type: dropdown
-    id: macos_version
+    id: ubuntu_version
     attributes:
-      label: macOS version
+      label: Ubuntu version
       options:
-        - macOS 15 Sequoia
-        - macOS 14 Sonoma
-        - macOS 13 Ventura
+        - Ubuntu 24.04 LTS (Noble Numbat)
+        - Ubuntu 22.04 LTS (Jammy Jellyfish)
+        - Debian 12 (Bookworm)
         - Other (specify in additional context)
     validations:
       required: true
@@ -80,8 +76,8 @@ body:
     attributes:
       label: Architecture
       options:
-        - Apple Silicon (arm64)
-        - Intel (x86_64)
+        - amd64 (x86_64)
+        - arm64
         - Mixed cluster
     validations:
       required: true
