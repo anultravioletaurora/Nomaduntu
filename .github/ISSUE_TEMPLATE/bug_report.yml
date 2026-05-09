@@ -1,0 +1,98 @@
+name: Bug Report
+description: Something isn't working as expected
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug report. Please fill in as much detail as you can.
+
+  - type: dropdown
+    id: role
+    attributes:
+      label: Affected role(s)
+      description: Which role(s) is the issue related to?
+      multiple: true
+      options:
+        - apt_repo
+        - apt_update
+        - consul
+        - nomad
+        - set_facts
+        - Other / unsure
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear description of what went wrong.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: How can we reproduce the issue?
+      placeholder: |
+        1. Run `./deploy.zsh`
+        2. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+      description: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+      description: What actually happened? Paste any relevant Ansible output here.
+      render: shell
+    validations:
+      required: true
+
+  - type: dropdown
+    id: ubuntu_version
+    attributes:
+      label: Ubuntu version
+      options:
+        - Ubuntu 24.04 LTS (Noble Numbat)
+        - Ubuntu 22.04 LTS (Jammy Jellyfish)
+        - Debian 12 (Bookworm)
+        - Other (specify in additional context)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: arch
+    attributes:
+      label: Architecture
+      options:
+        - amd64 (x86_64)
+        - arm64
+        - Mixed cluster
+    validations:
+      required: true
+
+  - type: input
+    id: ansible_version
+    attributes:
+      label: Ansible version
+      description: Output of `ansible --version`
+      placeholder: "ansible [core 2.x.x]"
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Anything else that might be relevant (inventory structure, host variables, etc.). Avoid including sensitive values.

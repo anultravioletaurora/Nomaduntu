@@ -1,0 +1,4 @@
+---
+apt_repo_url: https://apt.releases.hashicorp.com
+apt_repo_gpg_key_url: "{{ apt_repo_url }}/gpg"
+apt_repo_keyring_path: /usr/share/keyrings/hashicorp-archive-keyring.gpg

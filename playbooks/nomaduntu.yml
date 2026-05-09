@@ -1,0 +1,24 @@
+---
+- name: Perform Nomaduntu deployment
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Include APT Repository
+      ansible.builtin.include_role:
+        name: apt_repo
+      when: ansible_facts['os_family'] == 'Debian'
+
+    - name: Include APT Update
+      ansible.builtin.include_role:
+        name: apt_update
+      when: ansible_facts['os_family'] == 'Debian'
+
+    - name: Include Nomad role
+      ansible.builtin.include_role:
+        name: nomad
+      when: ansible_facts['os_family'] == 'Debian'
+
+    - name: Include Consul role
+      ansible.builtin.include_role:
+        name: consul
+      when: ansible_facts['os_family'] == 'Debian'
