@@ -1,0 +1,21 @@
+---
+namespace: anultravioletaurora
+name: nomaduntu
+authors:
+  - Violet Caulfield
+version: 1.0.0
+readme: README.md
+description: An Ansible collection for deploying Nomad + Consul on an Ubuntu cluster.
+license:
+  - GPL-3.0-only
+tags:
+  - nomad
+  - consul
+  - ubuntu
+  - homelab
+  - hashicorp
+repository: https://github.com/anultravioletaurora/nomaduntu
+homepage: https://github.com/anultravioletaurora/nomaduntu
+issues: https://github.com/anultravioletaurora/nomaduntu/issues
+dependencies:
+  community.general: "*"

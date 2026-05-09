@@ -1,0 +1,5 @@
+---
+- name: Update APT Cache and Upgrade Packages
+  ansible.builtin.apt:
+    update_cache: true
+    upgrade: dist

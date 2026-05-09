@@ -1,0 +1,16 @@
+---
+- name: Download Hashicorp GPG Key
+  ansible.builtin.get_url:
+    url: "{{ apt_repo_gpg_key_url }}"
+    dest: "{{ apt_repo_keyring_path }}"
+    mode: "0644"
+
+- name: Get dpkg architecture
+  ansible.builtin.command: dpkg --print-architecture
+  register: apt_repo_dpkg_arch
+  changed_when: false
+
+- name: Add Hashicorp APT Repository
+  ansible.builtin.apt_repository:
+    repo: "deb [arch={{ apt_repo_dpkg_arch.stdout }} signed-by={{ apt_repo_keyring_path }}] {{ apt_repo_url }} {{ ansible_facts['lsb']['codename'] }} main"
+    state: present
