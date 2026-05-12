@@ -1,5 +1,7 @@
 ---
 - name: Install Consul via APT
+  become: true
+  become_exe: sudo.ws
   ansible.builtin.apt:
     name: consul
     state: present

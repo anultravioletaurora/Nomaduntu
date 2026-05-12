@@ -1,5 +1,7 @@
 ---
 - name: Install Nomad via APT
+  become: true
+  become_exe: sudo.ws
   ansible.builtin.apt:
     name: nomad
     state: present
