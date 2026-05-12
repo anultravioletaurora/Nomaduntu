@@ -1,5 +1,14 @@
 ---
 - name: Update APT Cache and Upgrade Packages
+  become: true
   ansible.builtin.apt:
     update_cache: true
     upgrade: dist
+
+- name: Install additional packages
+  become: true
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "{{ additional_apt_packages }}"

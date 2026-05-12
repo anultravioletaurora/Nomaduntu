@@ -1,8 +1,6 @@
 ---
 - name: Download Hashicorp GPG Key
   become: true
-  become_user: root
-  become_method: ansible.builtin.su
   ansible.builtin.get_url:
     url: "{{ apt_repo_gpg_key_url }}"
     dest: "{{ apt_repo_keyring_path }}"
@@ -15,8 +13,7 @@
 
 - name: Add Hashicorp APT Repository
   become: true
-  become_user: root
-  become_method: ansible.builtin.su
   ansible.builtin.apt_repository:
-    repo: "deb [arch={{ apt_repo_dpkg_arch.stdout }} signed-by={{ apt_repo_keyring_path }}] {{ apt_repo_url }} {{ ansible_facts['lsb']['codename'] }} main"
+    # repo: "deb [arch={{ apt_repo_dpkg_arch.stdout }} signed-by={{ apt_repo_keyring_path }}] {{ apt_repo_url }} {{ ansible_facts['lsb']['codename'] }} main"
+    repo: "deb [arch={{ apt_repo_dpkg_arch.stdout }} signed-by={{ apt_repo_keyring_path }}] {{ apt_repo_url }} noble main"
     state: present
